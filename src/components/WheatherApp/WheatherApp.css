@@ -1,0 +1,114 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* parent containers */
+
+.weather-app-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    text-align: center;
+    justify-content: center;
+    gap: 100px;
+}
+
+.top-container {
+    width: 50%;
+    align-self: center;
+    width: 100%;
+    padding: 5px 5px 50PX 5PX;
+    display: flex;
+    flex-wrap: wrap;
+    width: 30vw;
+
+}
+
+/* FORECAST container */
+.forecast-container {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(241, 249, 249, 0.639);
+    width: 100vw;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    height: 20%;
+}
+
+.forecast-items {
+    display: flex;
+}
+
+.dayInfos {
+    padding: 20px;
+}
+
+.nextBtn {
+    width: 10%;
+    height: 50px;
+}
+
+/* form */
+
+form {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    width: 100%;
+    border: none;
+    margin-top: 20px;
+}
+
+input {
+    padding: 15px 15px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    width: 600px;
+    border: none;
+    text-align: center;
+}
+
+.searchBtn {
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border: none;
+    background-color: gainsboro;
+    color: rgb(83, 82, 82);
+    font-weight: 700;
+    width: 100px;
+    cursor: pointer;
+}
+
+.searchBtn:hover {
+    opacity: 0.7;
+}
+
+h2 {
+    width: 100%;
+}
+
+/* HORIZONTAL SCROLLBAR  */
+
+/* width */
+::-webkit-scrollbar {
+    height: 10px;
+
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: skyblue;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(64, 109, 206);
+}

@@ -9,6 +9,7 @@ export default function WheatherApp() {
   const [startUpdate, setStartUpdate] = useState(false);
   const [temp, setTemp] = useState(null);
   const [icons, setIcons] = useState("");
+  const [adress, setAdress] = useState("");
   const [description, setDescription] = useState("");
   const [dayDate, setDayDate] = useState("");
   const [daysArray, setDaysArray] = useState([]);
@@ -42,6 +43,7 @@ export default function WheatherApp() {
       setDayDate(fetchedData.days[0].datetime);
       setIcons(fetchedData.currentConditions.icon);
       setDescription(fetchedData.currentConditions.conditions);
+      setAdress(fetchedData.resolvedAddress);
       console.log(fetchedData.days[0].datetime);
       console.log(fetchedData.days[0].temp);
       console.log(fetchedData.days[0]);
@@ -50,36 +52,51 @@ export default function WheatherApp() {
       setDaysArray(fetchedData.days);
     }
   }, [fetchedData]);
-  console.log(daysArray);
+  console.log(fetchedData);
+
+  // HANDLE CLICK:
+  const handleNextClick = (e) => {};
 
   return (
     <div className="weather-app-container">
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Search the city of your choice"
-          onChange={handleInput}
-          value={search}
-        ></input>
-        <button type="submit">Search</button>
-      </form>
+      <div className="top-container">
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Search your city's weather"
+            onChange={handleInput}
+            value={search}
+          ></input>
+          <button type="submit" className="searchBtn">
+            Search
+          </button>
+        </form>
 
-      <div className="center-container">
-        <h2>{search}</h2>
+        <div className="city-temp">
+          <h1>{adress}</h1>
+          <h1>{temp}</h1>
+        </div>
       </div>
 
       <div className="forecast-container">
-        {daysArray.map((dayItem, index) => {
-          return (
-            <DayInfo
-              dayDate={daysArray[index].datetime}
-              temperature={daysArray[index].temp}
-              srcIcon={`icons/${daysArray[index].icon}.png`}
-              description={daysArray[index].description}
-            />
-          );
-        })}
-        ;
+        <div className="forecast-items">
+          {daysArray.map((dayItem, index) => {
+            return (
+              <div className="dayInfos">
+                <DayInfo
+                  dayDate={daysArray[index].datetime}
+                  temperature={daysArray[index].temp}
+                  srcIcon={`icons/${daysArray[index].icon}.png`}
+                  description={daysArray[index].description}
+                />
+              </div>
+            );
+          })}
+        </div>
+
+        {/* <button onClick={handleNextClick} className="nextBtn">
+          Next day
+        </button> */}
       </div>
     </div>
   );
